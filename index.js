@@ -116,12 +116,13 @@ class Lambdasian {
     this.name = attrs.name;
     this.age = attrs.age;
     this.location = attrs.location;
+    this.grade = attrs.grade;
   }
   speak(){
     return `Hello my name is ${this.name}, I am from ${this.location}`
   }
 }
-const joshua = new Lambdasian({name: "Joshua", age: 30, location: "Hammond"})
+const joshua = new Lambdasian({name: "Joshua", age: 30, location: "Hammond", grade: 70})
 // console.log(joshua.speak());
 
 /*
@@ -152,9 +153,23 @@ class Instructor extends Lambdasian {
   grade(student, subject){
     return `${student.name} receives a perfect score on ${subject}`
   }
+  gradeStretch (student){
+    let points = Math.floor(Math.random() * (10 - -10) ) + -10;
+    console.log(points)
+    student.grade = student.grade + points;
+    console.log (student.grade);
+  }
+  graduate (student){
+    if (student.grade > 69){
+      console.log( `${student.name} graduates!`)
+    }
+    else {console.log (`${student.name} doesn't graduate yet.`)}
+  }
 }
-// const jojo = new Instructor({name: "Jojo", age: 26, location: "California", specialty: "Tutoring", favLanguage: "Python", catchPhrase: "HI I'M JOJO"});
-// console.log (jojo.grade(joshua, "arrays"));
+const jojo = new Instructor({name: "Jojo", age: 26, location: "California", specialty: "Tutoring", favLanguage: "Python", catchPhrase: "HI I'M JOJO"});
+jojo.gradeStretch(joshua);
+jojo.gradeStretch(joshua);
+jojo.graduate(joshua);
 
 
 /*
@@ -189,7 +204,7 @@ class Student extends Lambdasian {
     return `${this.name} has begun sprint challenge on ${subject}`;
   }
 }
-const george = new Student ({name: "George", age: 58, location: "Glastonbury", previousBackground: "Guitarist", className: "WebPT18", favSubjects: ["HTML", "CSS", "JS"]});
+const george = new Student ({name: "George", age: 58, location: "Glastonbury", previousBackground: "Guitarist", className: "WebPT18", favSubjects: ["HTML", "CSS", "JS"], grade: 70});
 // console.log (george.sprintChallenge("arrays"));
 
 /*
